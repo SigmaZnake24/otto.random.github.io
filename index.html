@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>otto.random</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow:auto;
+    }
+  </style>
+</head>
+<body id="bodika">
+    <div id="upperthingy">
+        <center><p class="headtext">OTTO.RANDOM</p></center>
+        <center><p style="color: white;">Min:</p><input type="number" id="min" placeholder="min"></center>
+        <center><p style="color: white;">Max:</p><input type="number" id="max" placeholder="max"></center>
+        <center><p style="color: white;">Darab:</p><input type="number" id="count" placeholder="darab"></center>
+        <center><button id="generateBtn" type="button">Generate!</button></center>
+        <div id="output">
+            <center><p>Az elhalálozott sorszáma:</p></center>
+            <center><textarea id="result" rows="10" cols="30" readonly></textarea></center>
+        </div> 
+    </div>
+    <div id="spacediv">
 
+    </div>
+    <div id="presets">
+        <center><p style="color: white;">Előre beállított értékek:</p></center>
+        <center>
+            <button onclick="setPreset(1)">29 1db</button>
+            <button onclick="setPreset(2)">30 1db</button>
+            <button onclick="setPreset(3)">31 1db</button>
+            <button onclick="setPreset(4)">32 1db</button>
+            <button onclick="setPreset(5)">33 1db</button>
+            <button onclick="setPreset(6)">34 1db</button>
+        </center>
+    </div>
+
+
+
+
+
+
+</script>
+</body>
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+
+<script>
+
+    const { width: bodyWidth, height: bodyHeight } = document.body.getBoundingClientRect();
+
+VANTA.DOTS({
+  el: "#upperthingy",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: true,
+  minHeight: bodyHeight,
+  minWidth: bodyWidth,
+  scale: 0.5,
+  scaleMobile: 1,
+  color: 0xff0000,
+  color2: 0xff0000,
+  backgroundColor: 0x000000,
+  size: 4.5,
+  spacing: 34,
+  showLines: true
+})
+</script>
+
+</html>
