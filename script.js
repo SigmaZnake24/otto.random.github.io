@@ -74,10 +74,10 @@ function setPreset(index) {
       intervalId = null;
       holdTimeout = null;
       btn.classList.remove('holding');
-      btn.textContent = 'Generating...';
+      btn.textContent = '...';
       // restore label shortly after, then call generate
       setTimeout(() => { 
-        btn.textContent = 'Generate!';
+        btn.textContent = '▶︎';
         generateRandom();
       }, 1500);
 
@@ -94,7 +94,7 @@ function setPreset(index) {
       intervalId = null;
     }
     btn.classList.remove('holding');
-    btn.textContent = 'Generate!';
+    btn.textContent = '▶︎';
   }
 
   // mouse
