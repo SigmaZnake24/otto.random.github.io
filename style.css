@@ -136,3 +136,30 @@ input[type="number"] {
     width: 110%;
     margin-left: -5%;
 }
+
+
+
+.text {
+  position: fixed;
+  font-size: 70px;
+  color: white;
+  white-space: nowrap;
+  z-index: 9999;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 0, 0, 0.8);
+  pointer-events: none;
+  font-family: monospace;
+}
+
+#összegzés {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+#összegzés>p {
+    color: white;
+    justify-content: center;
+    margin: 5px 0;
+}
