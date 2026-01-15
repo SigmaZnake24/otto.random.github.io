@@ -18,12 +18,28 @@ function generateRandom() {
     }
 
     let result = "";
+    let counts = {};
+    
     for (let i = 0; i < count; i++) {
         const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-        result += randomNum + " ";
+        result += randomNum + "\n";
+        counts[randomNum] = (counts[randomNum] || 0) + 1;
     }
 
     document.getElementById("result").value = result;
+    updateSummary(counts);
+}
+
+function updateSummary(counts) {
+    const summaryDiv = document.getElementById("összegzés");
+    const paragraphs = summaryDiv.querySelectorAll("p");
+    
+    // Az első p-t (Összegzés:) kihagyjuk
+    for (let i = 1; i < paragraphs.length; i++) {
+        const num = i;
+        const count = counts[num] || 0;
+        paragraphs[i].textContent = num + ": " + count;
+    }
 }
 function setPreset(index) {
   const presets = {
@@ -113,3 +129,50 @@ function setPreset(index) {
     if (ev.key === ' ' || ev.key === 'Enter') cancelHold(ev);
   });
 })();
+
+
+const texts = [
+  "vigyázat, életveszély!",
+  "⚠️",
+  "Feleléshez kötelező a defibrillátor!",
+  "Otthon nem nézted át?",
+  "Megbukni könnyű, de szégyenteljes",
+  "Bezzeg az én időmben",
+  "Segítek: nem.",
+  "Próbálkozz: Hátha kettes",
+  "Hm. Ez talán így van. Talán nem.",
+  "⚠️",
+  "⚠️",
+  "⚠️",
+  "⚠️",
+  "⚠️ ⚠️ ⚠️ ⚠️ ⚠️",
+];
+
+function spawnText() {
+  const text = document.createElement("div");
+  text.className = "text";
+  text.innerText = texts[Math.floor(Math.random() * texts.length)];
+
+  const startY = Math.random() * window.innerHeight;
+  text.style.top = startY + "px";
+  text.style.left = "-1300px";
+
+  document.body.appendChild(text);
+
+  let x = -1300;
+  const speed = 7 + Math.random() * 3;
+
+  const move = setInterval(() => {
+    x += speed;
+    text.style.left = x + "px";
+
+    if (x > window.innerWidth) {
+      clearInterval(move);
+      text.remove();
+    }
+  }, 16);
+}
+
+setInterval(spawnText, 5000);
+
+
